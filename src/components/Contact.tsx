@@ -2,16 +2,12 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { profile } from "@/lib/data";
+import { profile, socials } from "@/lib/data";
+import { resumePath } from "@/lib/site";
+import BrandIcon from "./BrandIcon";
 import Magnetic from "./Magnetic";
 import { RevealText } from "./Reveal";
 
-const socials = [
-  { label: "GitHub", href: profile.links.github },
-  { label: "LinkedIn", href: profile.links.linkedin },
-  { label: "LeetCode", href: profile.links.leetcode },
-  { label: "npm", href: profile.links.npm },
-];
 
 function LocalTime() {
   const [t, setT] = useState("");
@@ -90,6 +86,16 @@ export default function Contact() {
               </motion.span>
             </AnimatePresence>
           </button>
+          <a
+            href={resumePath}
+            target="_blank"
+            rel="noreferrer"
+            data-cursor="PDF"
+            className="group inline-flex h-[60px] items-center gap-2 rounded-full border border-ink bg-[#fffaf2] px-6 text-sm font-medium shadow-[3px_3px_0_#16130f] transition-transform hover:-translate-y-0.5"
+          >
+            Résumé
+            <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
+          </a>
         </div>
 
         <div className="mt-24 grid gap-10 border-t border-ink/25 pt-8 md:grid-cols-3">
@@ -98,7 +104,8 @@ export default function Contact() {
             <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
               {socials.map((s) => (
                 <li key={s.label}>
-                  <a href={s.href} target="_blank" rel="noreferrer" className="group relative text-lg">
+                  <a href={s.href} target="_blank" rel="noreferrer" className="group relative inline-flex items-center gap-2 text-lg">
+                    <BrandIcon name={s.icon} size={17} mono className="transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" />
                     {s.label}
                     <span className="absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-ink transition-transform duration-500 group-hover:origin-left group-hover:scale-x-100" />
                   </a>

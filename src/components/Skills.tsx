@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { skillGroups } from "@/lib/data";
+import BrandIcon from "./BrandIcon";
 import { RevealText } from "./Reveal";
 
 const DOTS = ["#ff5a1f", "#7c5cff", "#2e9e6a", "#e0a100", "#3b82f6"];
@@ -55,8 +56,11 @@ export default function Skills() {
                   animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
                   whileHover={{ scale: 1.08, rotate: i % 2 ? 3 : -3, backgroundColor: DOTS[active], color: "#16130f" }}
                   transition={{ type: "spring", stiffness: 300, damping: 18, delay: i * 0.04 }}
-                  className="rounded-2xl border border-paper/25 px-5 py-3 font-serif text-2xl md:text-4xl"
+                  className="flex items-center gap-3 rounded-2xl border border-paper/25 py-2.5 pl-2.5 pr-5 font-serif text-2xl md:text-4xl"
                 >
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#fffaf2] md:h-11 md:w-11">
+                    <BrandIcon name={s} size={22} />
+                  </span>
                   {s}
                 </motion.span>
               ))}

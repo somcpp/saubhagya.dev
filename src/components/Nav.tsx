@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { resumePath } from "@/lib/site";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 
 const links = [
@@ -42,7 +43,7 @@ export default function Nav() {
   return (
     <>
       <motion.div
-        className="fixed left-0 right-0 top-0 z-50 h-[3px] origin-left bg-accent"
+        className="fixed left-0 right-0 top-0 z-50 h-[3px] origin-left bg-ember"
         style={{ scaleX: scrollYProgress }}
       />
       <motion.header
@@ -82,8 +83,16 @@ export default function Nav() {
 
           <div className="flex items-center gap-2">
             <a
+              href={resumePath}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden rounded-full border border-ink/20 px-4 py-2 text-sm transition-colors hover:border-ink sm:block"
+            >
+              Résumé ↓
+            </a>
+            <a
               href="#contact"
-              className="hidden rounded-full bg-ink px-4 py-2 text-sm text-paper transition-colors hover:bg-accent sm:block"
+              className="hidden rounded-full bg-ink px-4 py-2 text-sm text-paper transition-colors hover:bg-red sm:block"
             >
               Say hello
             </a>
@@ -124,6 +133,17 @@ export default function Nav() {
                 <span className="text-accent">.</span>
               </motion.a>
             ))}
+            <motion.a
+              href={resumePath}
+              target="_blank"
+              rel="noreferrer"
+              className="bg-ember mt-10 self-start rounded-full px-6 py-3 text-paper"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 + links.length * 0.07 }}
+            >
+              Download résumé ↓
+            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>

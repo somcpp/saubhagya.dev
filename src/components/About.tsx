@@ -3,7 +3,7 @@
 import { animate, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { stats } from "@/lib/data";
-import { FadeIn, RevealText, SectionLabel } from "./Reveal";
+import { FadeIn, Mark, RevealText, SectionLabel } from "./Reveal";
 
 function Counter({ value, decimals = 0, suffix }: { value: number; decimals?: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -38,12 +38,12 @@ export default function About() {
           <FadeIn delay={0.2} className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-ink-soft">
             <p>
               I&apos;m a third-year CS student who learns by shipping. My projects tend to start as &ldquo;how hard
-              could it be?&rdquo; and end up as deployed products with auth, payments, real-time sync and actual users.
+              could it be?&rdquo; and end up as deployed products with auth, payments, real-time sync and <Mark>actual users</Mark>.
             </p>
             <p>
-              Lately that&apos;s meant a <span className="text-ink">multi-tenant school SaaS</span>, a{" "}
-              <span className="text-ink">Discord-style real-time platform</span>, and a{" "}
-              <span className="text-ink">CLI that draws your codebase as a graph</span>. When I&apos;m not building,
+              Lately that&apos;s meant a <Mark delay={0.3}><span className="text-ink">multi-tenant school SaaS</span></Mark>, a{" "}
+              <Mark delay={0.5}><span className="text-ink">Discord-style real-time platform</span></Mark>, and a{" "}
+              <Mark delay={0.7}><span className="text-ink">CLI that draws your codebase as a graph</span></Mark>. When I&apos;m not building,
               I&apos;m usually grinding contests on LeetCode or contributing to open source.
             </p>
           </FadeIn>

@@ -2,7 +2,9 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { profile } from "@/lib/data";
+import { profile, socials } from "@/lib/data";
+import { resumePath } from "@/lib/site";
+import BrandIcon from "./BrandIcon";
 import Magnetic from "./Magnetic";
 import SkillGraph from "./SkillGraph";
 
@@ -85,21 +87,41 @@ export default function Hero() {
                 href="#work"
                 className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-ink px-6 py-3.5 text-paper"
               >
-                <span className="absolute inset-0 translate-y-full rounded-full bg-accent transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:translate-y-0" />
+                <span className="bg-ember absolute inset-0 translate-y-full rounded-full transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:translate-y-0" />
                 <span className="relative">See my work</span>
                 <span className="relative transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
             </Magnetic>
             <Magnetic>
               <a
-                href={profile.links.github}
+                href={resumePath}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3.5 transition-colors hover:border-ink"
+                data-cursor="PDF"
+                className="group inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3.5 transition-colors hover:border-ink"
               >
-                GitHub ↗
+                Résumé
+                <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
               </a>
             </Magnetic>
+            <div className="flex items-center gap-2">
+              {socials.map((s, i) => (
+                <motion.a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={s.label}
+                  className="grid h-11 w-11 place-items-center rounded-full border border-ink/15 bg-[#fffaf2] text-ink transition-colors hover:border-ink"
+                  initial={{ opacity: 0, scale: 0.4 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ y: -4, rotate: i % 2 ? 8 : -8 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 14, delay: 1.1 + i * 0.06 }}
+                >
+                  <BrandIcon name={s.icon} size={18} />
+                </motion.a>
+              ))}
+            </div>
           </motion.div>
         </div>
 

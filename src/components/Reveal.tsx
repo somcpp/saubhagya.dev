@@ -63,6 +63,26 @@ export function FadeIn({
   );
 }
 
+/** Highlighter-pen sweep behind inline text when it scrolls into view. */
+export function Mark({ children, delay = 0.2 }: { children: ReactNode; delay?: number }) {
+  return (
+    <motion.span
+      className="rounded-[3px] px-0.5 [box-decoration-break:clone] [-webkit-box-decoration-break:clone]"
+      style={{
+        backgroundImage: "linear-gradient(100deg, rgba(255,176,32,0.45), rgba(255,90,31,0.38) 50%, rgba(232,64,43,0.34))",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "0 88%",
+      }}
+      initial={{ backgroundSize: "0% 42%" }}
+      whileInView={{ backgroundSize: "100% 42%" }}
+      viewport={{ once: true, margin: "-12% 0px" }}
+      transition={{ duration: 0.9, ease, delay }}
+    >
+      {children}
+    </motion.span>
+  );
+}
+
 export function SectionLabel({ index, children }: { index: string; children: ReactNode }) {
   return (
     <FadeIn y={10} className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-ink-soft">

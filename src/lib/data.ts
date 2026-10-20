@@ -16,6 +16,13 @@ export const profile = {
   },
 };
 
+export const socials = [
+  { label: "GitHub", icon: "github", href: profile.links.github },
+  { label: "LinkedIn", icon: "linkedin", href: profile.links.linkedin },
+  { label: "LeetCode", icon: "leetcode", href: profile.links.leetcode },
+  { label: "npm", icon: "npm", href: profile.links.npm },
+];
+
 export const stats = [
   { value: 650, suffix: "+", label: "LeetCode problems solved" },
   { value: 1500, suffix: "+", label: "npm downloads in week one" },
