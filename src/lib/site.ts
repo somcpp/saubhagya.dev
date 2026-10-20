@@ -1,14 +1,14 @@
 import { profile } from "./data";
 
 /**
- * Canonical site URL. Set NEXT_PUBLIC_SITE_URL once you have a custom domain;
- * on Vercel it falls back to the production deployment URL automatically.
+ * Canonical site URL used for metadata, the sitemap and OG images.
+ * Production always points at the real domain (even on Vercel preview
+ * deployments) so search engines and link previews never see *.vercel.app.
+ * NEXT_PUBLIC_SITE_URL overrides it if the domain ever changes.
  */
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000");
+  (process.env.NODE_ENV === "production" ? "https://saubhagya.dev" : "http://localhost:3000");
 
 export const siteTitle = `${profile.name} · Full-Stack Developer`;
 
