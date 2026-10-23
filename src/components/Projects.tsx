@@ -32,10 +32,10 @@ function Card({
   const Visual = VISUALS[project.slug];
 
   return (
-    <div className="py-3 lg:sticky lg:top-0 lg:flex lg:h-screen lg:items-center lg:justify-center lg:py-0">
+    <div className="py-3 lg:pointer-events-none lg:sticky lg:top-0 lg:flex lg:h-screen lg:items-center lg:justify-center lg:py-0">
       <motion.article
         style={stacked ? { scale, top: i * 28, backgroundColor: project.color } : { backgroundColor: project.color }}
-        className="relative grid w-full origin-top gap-8 overflow-hidden rounded-[32px] border border-ink p-6 shadow-[0_-20px_60px_-30px_rgba(22,19,15,0.4)] md:p-8 lg:grid-cols-[1fr_1.1fr] lg:gap-10"
+        className="pointer-events-auto relative grid w-full origin-top gap-8 overflow-hidden rounded-[32px] border border-ink p-6 shadow-[0_-20px_60px_-30px_rgba(22,19,15,0.4)] md:p-8 lg:grid-cols-[1fr_1.1fr] lg:gap-10"
       >
         <div className="flex flex-col">
           <div className="flex items-center justify-between font-mono text-xs uppercase tracking-widest" style={{ color: project.ink }}>
